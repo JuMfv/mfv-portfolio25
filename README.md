@@ -1,77 +1,60 @@
-# Welcome to your Lovable project
+# Frame Portfolio — Fullstack & Data Portfolio
 
-## Project info
+This repository contains a Vite + React + TypeScript portfolio site adapted to showcase full‑stack and data projects.
 
-**URL**: https://lovable.dev/projects/6fd12b81-631e-49d3-83b3-86e8b3fab3ae
+## Quick overview
+- Framework: Vite + React (SWC)
+- Language: TypeScript
+- Styling: Tailwind CSS
+- Purpose: showcase web, data, ML and infra projects with detailed technical narratives, links to repos and demos.
 
-## How can I edit this code?
+## Getting started (local)
+### Prerequisites
+- Node.js (LTS 18/20 recommended)
+- npm
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/6fd12b81-631e-49d3-83b3-86e8b3fab3ae) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+### Install
+```bash
+cd /path/to/mfv-portfolio25
+npm install
 ```
 
-**Edit a file directly in GitHub**
+### Development
+```bash
+npm run dev
+# open http://localhost:5173 (or the port printed by Vite)
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Build
+```bash
+npm run build
+```
 
-**Use GitHub Codespaces**
+## Deploy
+There are two deployment methods included:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. GitHub Pages (workflow)
+   - A GitHub Actions workflow is provided at `.github/workflows/deploy-gh-pages.yml` and will build and publish the site automatically when you push to `main`.
+   - Alternatively, the site has been published to the `gh-pages` branch. To update manually:
+     ```bash
+     npm run build
+     # copy ./dist content to a branch named gh-pages and push
+     ```
 
-## What technologies are used for this project?
+2. Vercel / Netlify
+   - These platforms can deploy from the repository automatically. Set the build command to `npm run build` and publish directory to `dist`.
 
-This project is built with:
+## Adding a new project
+Edit `src/data/projects.ts` and add a new object following existing entries. Required fields:
+- `id`, `title`, `slug`, `category`, `year`, `description`, `coverImage`, `images` (array)
+Optional fields for technical portfolio:
+- `role`, `tech`, `repo`, `demo`, `context`, `problem`, `solution`, `results`, `architecture`, `reproduce`
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Contributing
+1. Create a branch
+2. Make changes
+3. Commit with clear message
+4. Push and create a PR
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/6fd12b81-631e-49d3-83b3-86e8b3fab3ae) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
-
-# ./tailwind-plus folder:
-
-The tailwind-plus folder contains tailwind components and themes to be used as inspiration for the project. DO NOT REMOVE THE FOLDER UNLESS SPECIFICALLY TOLD TO DO SO
+## License
+MIT
