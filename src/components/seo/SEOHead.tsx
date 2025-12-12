@@ -7,6 +7,7 @@ interface SEOHeadProps {
   description?: string;
   image?: string;
   type?: 'website' | 'article';
+  keywords?: string[];
 }
 
 /**
@@ -19,6 +20,7 @@ export function SEOHead({
   // Photo by Oyemike Princewill on Unsplash
   image = 'https://images.unsplash.com/photo-1662333085102-f6ae3be21c91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjB8&ixlib=rb-4.1.0&q=80&w=1080',
   type = 'website'
+  , keywords = []
 }: SEOHeadProps) {
   const location = useLocation();
   
@@ -69,8 +71,10 @@ export function SEOHead({
 
     // Additional SEO tags
     updateMetaTag('author', photographerInfo.name);
-    updateMetaTag('keywords', `photography, ${photographerInfo.name}, professional photographer, ${photographerInfo.tagline}`);
-  }, [fullTitle, fullDescription, fullUrl, image, type]);
+    const defaultKeywords = ['React','Node.js','data science','MLOps','full-stack','TypeScript'];
+    const allKeywords = Array.from(new Set([...(keywords || []), ...defaultKeywords]));
+    updateMetaTag('keywords', allKeywords.join(', '));
+  }, [fullTitle, fullDescription, fullUrl, image, type, keywords]);
 
   return null;
 }

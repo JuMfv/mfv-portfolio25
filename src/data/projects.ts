@@ -2,347 +2,141 @@ import type { Project } from '@/types';
 
 export const projects: Project[] = [
   {
-    id: '1',
-    title: 'Desert Solitude',
-    category: 'landscapes',
+    id: 'web-1',
+    title: 'Realtime Collaboration Platform',
+    category: 'web',
+    year: '2025',
+    slug: 'realtime-collab',
+    coverImage: 'https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200',
+    description: 'A Slack-like realtime collaboration app focused on low-latency messaging and presence.',
+    role: 'Full-stack developer',
+    tech: ['React', 'TypeScript', 'Node.js', 'Postgres', 'Socket.IO', 'Docker'],
+    repo: 'https://github.com/your-org/realtime-collab',
+    demo: 'https://realtime.example.com',
+    images: [
+      { id: 'web-1-1', src: 'https://images.pexels.com/photos/1519389950473-47ba0277781c.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200', alt: 'Realtime app screenshot', aspectRatio: 'landscape' },
+    ],
+    context: 'Teams need a lightweight collaboration tool with real-time presence and threaded conversations.',
+    problem: 'Existing tools were either heavy or lacked fine-grained presence and offline sync for mobile users.',
+    solution: 'Built an event-driven backend with Socket.IO, used optimistic UI updates and local persistence for offline support. Scaled with horizontal workers and a Redis pub/sub layer.',
+    results: ['Realtime latency <120ms', 'DAU ×3 in 6 months', 'Sync success rate 99.8%'],
+    architecture: 'Client (React) → API (Node.js + Fastify) → Realtime (Socket.IO + Redis Pub/Sub) → Postgres',
+    reproduce: 'git clone && npm install && docker-compose up -d && npm run dev'
+  },
+
+  {
+    id: 'data-1',
+    title: 'Sales Forecasting Pipeline',
+    category: 'data',
     year: '2024',
-    slug: 'desert-solitude',
-    // Photo by Zain Creations on Unsplash
-    coverImage: 'https://images.unsplash.com/photo-1733496637708-9470e9c8cfe2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjB8&ixlib=rb-4.1.0&q=80&w=1080',
-    description: 'An exploration of the stark beauty and quiet majesty of the American Southwest. This series captures the interplay of light, shadow, and ancient geological formations that define the desert landscape.',
-    client: 'National Geographic',
-    camera: 'Hasselblad X2D 100C',
-    location: 'Arizona & Utah',
+    slug: 'sales-forecasting',
+    coverImage: 'https://images.pexels.com/photos/7947713/pexels-photo-7947713.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200',
+    description: 'End-to-end forecasting pipeline for retail sales with automated retraining and monitoring.',
+    role: 'Data Scientist / MLOps',
+    tech: ['Python', 'Pandas', 'Prophet', 'MLflow', 'FastAPI', 'Kubernetes'],
+    repo: 'https://github.com/your-org/sales-forecasting',
+    demo: '',
     images: [
-      {
-        id: '1-1',
-        // Photo by Joe Dudeck on Unsplash
-        src: 'https://images.unsplash.com/photo-1610142004358-e4e987e4c5af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjF8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Desert canyon at golden hour',
-        aspectRatio: 'landscape'
-      },
-      {
-        id: '1-2',
-        // Photo by Giorgio Fouarge on Unsplash
-        src: 'https://images.unsplash.com/photo-1705321217071-b1b6672fa23c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjF8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Sand dunes in morning light',
-        aspectRatio: 'portrait'
-      },
-      {
-        id: '1-3',
-        // Photo by Astroby krishna on Unsplash
-        src: 'https://images.unsplash.com/photo-1727319384541-8b96ca1526e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjF8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Rock formations under starry sky',
-        aspectRatio: 'landscape'
-      },
-      {
-        id: '1-4',
-        // Photo by Ilker Ozmen on Unsplash
-        src: 'https://images.unsplash.com/photo-1725986951716-75fb278ecaec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjJ8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Desert vista at sunset',
-        aspectRatio: 'square'
-      }
-    ]
+      { id: 'data-1-1', src: 'https://images.unsplash.com/photo-1517638851339-4aa32003c1b6?q=80&w=1200&auto=format&fit=crop', alt: 'Forecasting pipeline diagram', aspectRatio: 'landscape' }
+    ],
+    context: 'Retailers need accurate short-term forecasts to optimize inventory and staffing.',
+    problem: 'Manual forecasting was error-prone and didn\'t incorporate promotions or holidays.',
+    solution: 'Built ETL to join transactions, promotions, and calendar features; trained ensemble time-series models with MLflow tracking; deployed as an API with FastAPI.',
+    results: ['MAPE 6.5%', 'Inventory holding ↓ 18%', 'Automated retraining weekly'],
+    architecture: 'Ingest → Feature Store → Model Training (Spark/Pandas) → MLflow → Serving (FastAPI) → Monitoring',
+    reproduce: 'See README: pip install -r requirements.txt && python -m app.server'
   },
+
   {
-    id: '2',
-    title: 'Urban Portraits',
-    category: 'portraits',
+    id: 'web-2',
+    title: 'Analytics Dashboard',
+    category: 'web',
+    year: '2025',
+    slug: 'analytics-dashboard',
+    coverImage: 'https://images.pexels.com/photos/360399/pexels-photo-360399.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200',
+    description: 'Interactive analytics dashboard for product metrics and cohort analysis.',
+    role: 'Frontend & Data Integration',
+    tech: ['React', 'TypeScript', 'Vite', 'D3', 'Supabase'],
+    repo: 'https://github.com/your-org/analytics-dashboard',
+    demo: 'https://analytics.example.com',
+    images: [
+      { id: 'web-2-1', src: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop', alt: 'Dashboard screenshot', aspectRatio: 'landscape' }
+    ],
+    context: 'Product teams need fast exploration of engagement and retention metrics.',
+    problem: 'Existing reporting tools were slow and not customizable for ad-hoc cohorts.',
+    solution: 'Built a client-side visualization layer with server-side aggregation endpoints; implemented exportable CSV and caching for heavy queries.',
+    results: ['Report generation <2s', 'Engagement insights adoption ×4'],
+    architecture: 'Frontend (React + D3) ↔ API (Supabase/Edge Functions) ↔ Analytics DB',
+    reproduce: 'npm i && npm run dev'
+  },
+
+  {
+    id: 'ml-1',
+    title: 'Image Classification at Scale',
+    category: 'ml',
     year: '2024',
-    slug: 'urban-portraits',
-    // Photo by Bradley Andrews on Unsplash
-    coverImage: 'https://images.unsplash.com/photo-1761069234906-a7c77124f641?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjJ8&ixlib=rb-4.1.0&q=80&w=1080',
-    description: 'A portrait series celebrating the diversity and character of city dwellers. Each subject was photographed in their favorite urban location, revealing the intimate connection between people and their environment.',
-    client: 'The New York Times Magazine',
-    camera: 'Canon EOS R5',
-    location: 'New York City',
+    slug: 'image-classification',
+    coverImage: 'https://images.pexels.com/photos/6077181/pexels-photo-6077181.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200',
+    description: 'Deployed an image classification pipeline with continuous evaluation and model explainability.',
+    role: 'ML Engineer',
+    tech: ['PyTorch', 'FastAPI', 'Kubernetes', 'Seldon Core'],
+    repo: 'https://github.com/your-org/image-classification',
+    demo: '',
     images: [
-      {
-        id: '2-1',
-        // Photo by ali mahmoodi on Unsplash
-        src: 'https://images.unsplash.com/photo-1559123988-ebd5228736b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjJ8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Portrait of young man in urban setting',
-        aspectRatio: 'portrait'
-      },
-      {
-        id: '2-2',
-        // Photo by mouad bouallayel on Unsplash
-        src: 'https://images.unsplash.com/photo-1628173422874-0d18ff5bfb83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjN8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Professional portrait in natural light',
-        aspectRatio: 'portrait'
-      },
-      {
-        id: '2-3',
-        // Photo by Ivan Lenin on Unsplash
-        src: 'https://images.unsplash.com/photo-1581329318020-a226e3713ea8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjN8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Candid street portrait',
-        aspectRatio: 'square'
-      },
-      {
-        id: '2-4',
-        // Photo by Elric Pxl on Unsplash
-        src: 'https://images.unsplash.com/photo-1651464416004-60ae4e4846d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjR8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Portrait with city backdrop',
-        aspectRatio: 'portrait'
-      }
-    ]
+      { id: 'ml-1-1', src: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop', alt: 'Model training visualization', aspectRatio: 'landscape' }
+    ],
+    context: 'Automated tagging was needed to speed up content moderation and search.',
+    problem: 'High class imbalance and concept drift in production.',
+    solution: 'Used transfer learning with class-aware sampling, implemented online monitoring and drift detection, and scheduled retraining when drift > threshold.',
+    results: ['Top-1 accuracy 92%', 'Drift alerts reduced false positives by 24%'],
+    architecture: 'Data Lake → Training Jobs → Model Registry (MLflow) → Serving (Seldon) → Monitoring',
+    reproduce: 'See CONTRIBUTING.md for dataset access and training commands'
   },
+
   {
-    id: '3',
-    title: 'Architectural Visions',
-    category: 'architecture',
+    id: 'infra-1',
+    title: 'CI/CD & Observability Platform',
+    category: 'infra',
     year: '2023',
-    slug: 'architectural-visions',
-    // Photo by E Vos on Unsplash
-    coverImage: 'https://images.unsplash.com/photo-1758543437543-6d61ca0fd530?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjR8&ixlib=rb-4.1.0&q=80&w=1080',
-    description: 'Modern architecture captured through a minimalist lens. This series focuses on geometric forms, materiality, and the interplay of structure with natural light.',
-    client: 'Architectural Digest',
-    camera: 'Sony A7R V',
-    location: 'International',
+    slug: 'cicd-observability',
+    coverImage: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop',
+    description: 'Platform to standardize CI pipelines, deployments and centralized logging/metrics for engineering teams.',
+    role: 'Platform Engineer',
+    tech: ['GitHub Actions', 'Terraform', 'Prometheus', 'Grafana', 'EKS'],
+    repo: 'https://github.com/your-org/platform-ci',
+    demo: '',
     images: [
-      {
-        id: '3-1',
-        // Photo by Zulfugar Karimov on Unsplash
-        src: 'https://images.unsplash.com/photo-1762344682624-176d89eb3bfe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjR8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Modern glass building facade',
-        aspectRatio: 'portrait'
-      },
-      {
-        id: '3-2',
-        // Photo by Jason Leung on Unsplash
-        src: 'https://images.unsplash.com/photo-1690927324729-bcf7d2b3ecac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjV8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Architectural interior with natural light',
-        aspectRatio: 'landscape'
-      },
-      {
-        id: '3-3',
-        // Photo by Declan Sun on Unsplash
-        src: 'https://images.unsplash.com/photo-1752756351017-bbe91e0439a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjV8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Geometric concrete structure',
-        aspectRatio: 'square'
-      },
-      {
-        id: '3-4',
-        // Photo by Alessandro Ricossa on Unsplash
-        src: 'https://images.unsplash.com/photo-1748940644273-47564655923f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjV8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Contemporary building at dusk',
-        aspectRatio: 'landscape'
-      }
-    ]
+      { id: 'infra-1-1', src: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop', alt: 'CI pipeline screenshot', aspectRatio: 'landscape' }
+    ],
+    context: 'Multiple teams had divergent CI configs and lacked consolidated observability.',
+    problem: 'Inconsistent deployments and slow incident diagnosis.',
+    solution: 'Created reusable pipeline templates, standardized infra-as-code modules, and centralized Prometheus/Grafana stacks.',
+    results: ['Avg deploy time ↓45%', 'MTTR ↓30%'],
+    architecture: 'GitHub Actions → Terraform modules → EKS clusters → Prometheus/Grafana',
+    reproduce: 'terraform init && terraform apply (see modules README)'
   },
+
   {
-    id: '4',
-    title: 'Fashion Forward',
-    category: 'editorial',
-    year: '2023',
-    slug: 'fashion-forward',
-    // Photo by Yigit ARISOY on Unsplash
-    coverImage: 'https://images.unsplash.com/photo-1682232568244-edbb92614c2a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjZ8&ixlib=rb-4.1.0&q=80&w=1080',
-    description: 'An editorial series exploring contemporary fashion through bold compositions and dramatic lighting. Shot on location and in studio.',
-    client: 'Vogue',
-    camera: 'Phase One XF IQ4',
-    location: 'New York & Paris',
+    id: 'web-3',
+    title: 'Data Product Marketplace',
+    category: 'web',
+    year: '2025',
+    slug: 'data-product-marketplace',
+    coverImage: 'https://images.pexels.com/photos/5946222/pexels-photo-5946222.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200',
+    description: 'A marketplace for curated data-products and notebooks aimed at data teams and researchers.',
+    role: 'Full-stack & Data Product',
+    tech: ['Next.js', 'TypeScript', 'Postgres', 'Stripe'],
+    repo: 'https://github.com/your-org/data-product-marketplace',
+    demo: 'https://market.example.com',
     images: [
-      {
-        id: '4-1',
-        // Photo by Cord Allman on Unsplash
-        src: 'https://images.unsplash.com/photo-1730724620317-2b806898bdda?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NjZ8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Fashion editorial portrait',
-        aspectRatio: 'portrait'
-      },
-      {
-        id: '4-2',
-        // Photo by Happy Face Emoji on Unsplash
-        src: 'https://images.unsplash.com/photo-1704137892949-e480ceaebe24?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1Njd8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Model in dramatic lighting',
-        aspectRatio: 'portrait'
-      },
-      {
-        id: '4-3',
-        // Photo by Lawrence Krowdeed on Unsplash
-        src: 'https://images.unsplash.com/photo-1631970283992-6b57250a4a29?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1Njd8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Fashion photography in urban setting',
-        aspectRatio: 'landscape'
-      },
-      {
-        id: '4-4',
-        // Photo by Ayo Ogunseinde on Unsplash
-        src: 'https://images.unsplash.com/photo-1540513325222-55b3afd3ed5b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1Njh8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Editorial fashion portrait',
-        aspectRatio: 'portrait'
-      }
-    ]
-  },
-  {
-    id: '5',
-    title: 'Mountain Stories',
-    category: 'documentary',
-    year: '2023',
-    slug: 'mountain-stories',
-    // Photo by Eva Šumah on Unsplash
-    coverImage: 'https://images.unsplash.com/photo-1742260765447-239ed006350a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1Njh8&ixlib=rb-4.1.0&q=80&w=1080',
-    description: 'Documentary series following mountain communities and their relationship with the changing alpine environment. A year-long project documenting life at altitude.',
-    client: 'Personal Project',
-    camera: 'Fujifilm GFX 100 II',
-    location: 'Swiss Alps',
-    images: [
-      {
-        id: '5-1',
-        // Photo by Marek Piwnicki on Unsplash
-        src: 'https://images.unsplash.com/photo-1680287327539-9467451a8b81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1Njh8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Mountain landscape at dawn',
-        aspectRatio: 'landscape'
-      },
-      {
-        id: '5-2',
-        // Photo by Wang John on Unsplash
-        src: 'https://images.unsplash.com/photo-1621765808360-5b2ea25d147a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1Njl8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Alpine village in winter',
-        aspectRatio: 'landscape'
-      },
-      {
-        id: '5-3',
-        // Photo by Peter Robbins on Unsplash
-        src: 'https://images.unsplash.com/photo-1721960778604-6a814f039347?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1Njl8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Mountain peaks in fog',
-        aspectRatio: 'portrait'
-      },
-      {
-        id: '5-4',
-        // Photo by FETHI BOUHAOUCHINE on Unsplash
-        src: 'https://images.unsplash.com/photo-1654362248566-6804dbcc5bdc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1Njl8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Sunrise over mountain range',
-        aspectRatio: 'landscape'
-      }
-    ]
-  },
-  {
-    id: '6',
-    title: 'Coastal Light',
-    category: 'landscapes',
-    year: '2022',
-    slug: 'coastal-light',
-    // Photo by Max Kukurudziak on Unsplash
-    coverImage: 'https://images.unsplash.com/photo-1669908752972-e04c3b65e855?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1Njl8&ixlib=rb-4.1.0&q=80&w=1080',
-    description: 'The ever-changing mood of the coastline captured through different seasons and weather conditions. A meditation on light, water, and time.',
-    location: 'Pacific Northwest',
-    camera: 'Nikon Z9',
-    images: [
-      {
-        id: '6-1',
-        // Photo by Stefanie Jockschat on Unsplash
-        src: 'https://images.unsplash.com/photo-1619508126123-3586ee993858?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NzB8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Ocean waves at sunset',
-        aspectRatio: 'landscape'
-      },
-      {
-        id: '6-2',
-        // Photo by Vladimir Shubarin on Unsplash
-        src: 'https://images.unsplash.com/photo-1566303060899-999a74200af8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NzB8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Rocky coastline in morning mist',
-        aspectRatio: 'landscape'
-      },
-      {
-        id: '6-3',
-        // Photo by Panchanok Juntanarach on Unsplash
-        src: 'https://images.unsplash.com/photo-1762686185418-2bffbb8d8fea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NzB8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Beach at golden hour',
-        aspectRatio: 'landscape'
-      },
-      {
-        id: '6-4',
-        // Photo by Emma Watson on Unsplash
-        src: 'https://images.unsplash.com/photo-1594927058779-aa4c1b5804a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NzF8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Coastal cliffs in dramatic light',
-        aspectRatio: 'portrait'
-      }
-    ]
-  },
-  {
-    id: '7',
-    title: 'Studio Sessions',
-    category: 'portraits',
-    year: '2022',
-    slug: 'studio-sessions',
-    // Photo by Kyle Loftus on Unsplash
-    coverImage: 'https://images.unsplash.com/photo-1616267624976-b45d3a7bac73?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NzF8&ixlib=rb-4.1.0&q=80&w=1080',
-    description: 'Controlled studio portraiture emphasizing form, light, and expression. Classic approach to contemporary subjects.',
-    client: 'Various Editorial',
-    camera: 'Hasselblad H6D-100c',
-    location: 'New York Studio',
-    images: [
-      {
-        id: '7-1',
-        // Photo by Kyle Loftus on Unsplash
-        src: 'https://images.unsplash.com/photo-1616267624976-b45d3a7bac73?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NzF8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Studio portrait with dramatic lighting',
-        aspectRatio: 'portrait'
-      },
-      {
-        id: '7-2',
-        // Photo by Robert Piosik on Unsplash
-        src: 'https://images.unsplash.com/photo-1551536548-4de53e534e3f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NzJ8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Classic portrait in soft light',
-        aspectRatio: 'portrait'
-      },
-      {
-        id: '7-3',
-        // Photo by Bench Accounting on Unsplash
-        src: 'https://images.unsplash.com/photo-1449247709967-d4461a6a6103?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NzJ8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Portrait with minimalist background',
-        aspectRatio: 'square'
-      },
-      {
-        id: '7-4',
-        // Photo by Vitaly Gariev on Unsplash
-        src: 'https://images.unsplash.com/photo-1758521233019-e53cb9ce77b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NzJ8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Contemporary studio portrait',
-        aspectRatio: 'portrait'
-      }
-    ]
-  },
-  {
-    id: '8',
-    title: 'City Lights',
-    category: 'editorial',
-    year: '2022',
-    slug: 'city-lights',
-    // Photo by Michael Wu on Unsplash
-    coverImage: 'https://images.unsplash.com/photo-1582210413269-f0bf6d13f58f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NzN8&ixlib=rb-4.1.0&q=80&w=1080',
-    description: 'Urban nightscapes and the electric energy of city life after dark. Long exposures and ambient light create a dreamlike quality.',
-    client: 'Adobe Creative Cloud',
-    camera: 'Sony A7S III',
-    location: 'Tokyo & New York',
-    images: [
-      {
-        id: '8-1',
-        // Photo by Li Zhang on Unsplash
-        src: 'https://images.unsplash.com/photo-1617293134227-0ec282f3ed89?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NzN8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'City street at night with neon lights',
-        aspectRatio: 'landscape'
-      },
-      {
-        id: '8-2',
-        // Photo by Clay LeConey on Unsplash
-        src: 'https://images.unsplash.com/photo-1643124859906-b5f7ef3e210d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NzN8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Urban skyline at dusk',
-        aspectRatio: 'landscape'
-      },
-      {
-        id: '8-3',
-        // Photo by Lutz Stallknecht on Unsplash
-        src: 'https://images.unsplash.com/photo-1761870033405-d1474ec5dae9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NzR8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Night photography of city architecture',
-        aspectRatio: 'portrait'
-      },
-      {
-        id: '8-4',
-        // Photo by stable pattern on Unsplash
-        src: 'https://images.unsplash.com/photo-1701012292510-83de4283ef1e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDA2OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NjI3Njk1NzR8&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Downtown at night with light trails',
-        aspectRatio: 'landscape'
-      }
-    ]
+      { id: 'web-3-1', src: 'https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1200&auto=format&fit=crop', alt: 'Marketplace screenshot', aspectRatio: 'landscape' }
+    ],
+    context: 'Data scientists need a frictionless way to share and monetize models and datasets.',
+    problem: 'No single place for discoverability, licensing, and payments for data products.',
+    solution: 'Built a marketplace with licensing, previews, and one-click deployment of notebooks using containerized runtimes.',
+    results: ['25 sellers onboarded in 2 months', 'Average purchase value $120'],
+    architecture: 'Frontend → Marketplace API → Billing (Stripe) → Storage (S3) → Notebook Runtimes',
+    reproduce: 'npm i && npm run dev'
   }
 ];
 

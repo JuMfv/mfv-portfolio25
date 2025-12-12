@@ -72,6 +72,41 @@ export function ProjectCard({
                   <span>{project.year}</span>
                 </div>
               )}
+                {/* Tech badges and actions */}
+                {project.tech && project.tech.length > 0 && (
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {project.tech.slice(0, 6).map((t) => (
+                      <span key={t} className="text-xs px-2 py-1 rounded bg-white/10 text-white/90">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                <div className="mt-3 flex items-center gap-3">
+                  {project.repo && (
+                    <a
+                      href={project.repo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-sm inline-flex items-center gap-2 bg-white/10 text-white/90 px-3 py-1 rounded hover:bg-white/20 transition"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      Repo
+                    </a>
+                  )}
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-sm inline-flex items-center gap-2 bg-white/10 text-white/90 px-3 py-1 rounded hover:bg-white/20 transition"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      Demo
+                    </a>
+                  )}
+                </div>
             </div>
           </div>
 

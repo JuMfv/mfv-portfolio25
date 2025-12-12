@@ -30,7 +30,7 @@ export default function About() {
               About
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground font-light tracking-wide">
-              Photographer & Visual Storyteller
+              Full‑stack engineer & data practitioner — web apps, pipelines, and ML infrastructure
             </p>
           </motion.div>
         </div>
@@ -55,14 +55,14 @@ export default function About() {
                   loop
                   playsInline
                   preload="metadata"
-                  poster="https://images.pexels.com/videos/3888252/afro-hair-fashion-model-3888252.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200"
+                  poster="https://images.pexels.com/videos/31638247/free-video-31638247.jpg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200"
                   className="absolute inset-0 w-full h-full object-cover"
                   onError={(e) => {
                     const target = e.currentTarget;
                     target.style.display = 'none';
                   }}
                 >
-                  <source src="https://videos.pexels.com/video-files/3888252/3888252-sd_426_226_25fps.mp4" type="video/mp4" />
+                  <source src="https://videos.pexels.com/video-files/31638247/31638247-sd_540_960_30fps.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
                 {/* Video from Pexels */}
@@ -139,16 +139,14 @@ export default function About() {
 
               <Separator />
 
-              {/* Biography */}
+              {/* Biography / Skills */}
               <div className="space-y-4">
-                {photographerInfo.biography.split('\n\n').map((paragraph, index) => (
-                  <p
-                    key={index}
-                    className="text-base md:text-lg font-light leading-relaxed text-muted-foreground"
-                  >
-                    {paragraph}
-                  </p>
-                ))}
+                <p className="text-base md:text-lg font-light leading-relaxed text-muted-foreground">
+                  I build end-to-end software systems: from production frontends to data pipelines and ML workflows. My focus is on shipping reliable, observable and performant products.
+                </p>
+                <p className="text-base md:text-lg font-light leading-relaxed text-muted-foreground">
+                  Core skills: React, TypeScript, Node.js, Python, SQL, Kubernetes, Terraform, MLflow, Docker.
+                </p>
               </div>
 
               {/* Contact Info */}

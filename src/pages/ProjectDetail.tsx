@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, Camera, User } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { SEOHead } from '@/components/seo/SEOHead';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
@@ -75,6 +76,19 @@ export default function ProjectDetail() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-wide">
               {project.title}
             </h1>
+            {/* Role and tech badges */}
+            <div className="flex items-center gap-4">
+              {project.role && (
+                <span className="text-sm text-muted-foreground font-light">{project.role}</span>
+              )}
+              {project.tech && project.tech.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((t) => (
+                    <span key={t} className="text-xs px-2 py-1 rounded bg-muted/60 text-foreground">{t}</span>
+                  ))}
+                </div>
+              )}
+            </div>
             <div className="flex flex-wrap gap-6 text-sm text-muted-foreground font-light">
               <div className="flex items-center gap-2">
                 <Calendar className="size-4" />
@@ -105,6 +119,85 @@ export default function ProjectDetail() {
             </p>
           </div>
 
+          {/* Structured Technical Narrative */}
+          <div className="space-y-6 pt-6">
+            {project.context && (
+              <div>
+                <h4 className="text-sm uppercase text-muted-foreground tracking-wide">Contexte</h4>
+                <p className="mt-2 font-light text-foreground">{project.context}</p>
+              </div>
+            )}
+
+            {project.problem && (
+              <div>
+                <h4 className="text-sm uppercase text-muted-foreground tracking-wide">Problème</h4>
+                <p className="mt-2 font-light text-foreground">{project.problem}</p>
+              </div>
+            )}
+
+            {project.solution && (
+              <div>
+                <h4 className="text-sm uppercase text-muted-foreground tracking-wide">Solution technique</h4>
+                <p className="mt-2 font-light text-foreground">{project.solution}</p>
+              </div>
+            )}
+
+            {project.results && project.results.length > 0 && (
+              <div>
+                <h4 className="text-sm uppercase text-muted-foreground tracking-wide">Résultats</h4>
+                <ul className="mt-2 list-inside list-disc space-y-1 font-light text-foreground">
+                  {project.results.map((r, i) => (
+                    <li key={i}>{r}</li>
+                  ))}
+                </ul>
+                {/* Metrics / quick chips */}
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {project.metrics && project.metrics.map((m, i) => (
+                    <span key={i} className="text-xs px-2 py-1 bg-primary/10 text-primary rounded">{m}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Links & Architecture */}
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div className="flex items-center gap-3">
+                {project.repo && (
+                  <a href={project.repo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-2 bg-primary/10 text-primary rounded">
+                    Repo
+                  </a>
+                )}
+                {project.demo && (
+                  <a href={project.demo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-2 bg-foreground text-background rounded">
+                    Live Demo
+                  </a>
+                )}
+              </div>
+
+              {project.architecture && (
+                <div className="text-sm text-muted-foreground">
+                  <h4 className="uppercase tracking-wide">Architecture</h4>
+                  <p className="mt-1 font-light">{project.architecture}</p>
+                </div>
+              )}
+            </div>
+
+            {project.reproduce && (
+              <div>
+                <h4 className="text-sm uppercase text-muted-foreground tracking-wide">Reproduire / Run locally</h4>
+                <pre className="mt-2 bg-muted p-4 rounded overflow-auto text-sm">{project.reproduce}</pre>
+              </div>
+            )}
+          </div>
+
+          {/* Back link */}
+          <div className="pt-6">
+            <a href="/portfolio" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:underline">
+              <ArrowLeft className="size-4" />
+              Back to portfolio
+            </a>
+          </div>
+
           {/* Technical Details */}
           <div className="grid md:grid-cols-2 gap-6 pt-4">
             {project.camera && (
@@ -130,21 +223,23 @@ export default function ProjectDetail() {
       </section>
 
         {/* Image Gallery - Edge to edge */}
-        <section className="py-12 md:py-16">
-          <div className="space-y-8 md:space-y-12">
-            {project.images.map((image, index) => (
-              <ScrollReveal key={image.id} delay={index * 0.1}>
-                <ImageWithLightbox
-                  image={image}
-                  onClick={() => openLightbox(index)}
-                  priority={index === 0}
-                  index={0}
-                  className="w-full"
-                />
-              </ScrollReveal>
-            ))}
-          </div>
-        </section>
+        {project.images && project.images.length > 0 && (
+          <section className="py-12 md:py-16">
+            <div className="space-y-8 md:space-y-12">
+              {project.images.map((image, index) => (
+                <ScrollReveal key={image.id} delay={index * 0.1}>
+                  <ImageWithLightbox
+                    image={image}
+                    onClick={() => openLightbox(index)}
+                    priority={index === 0}
+                    index={index}
+                    className="w-full"
+                  />
+                </ScrollReveal>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Lightbox */}
         <Lightbox

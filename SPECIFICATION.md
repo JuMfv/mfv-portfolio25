@@ -18,7 +18,7 @@ Frame Portfolio is a **minimalist, image-focused portfolio platform** specifical
 
 ### Who Is It For?
 
-**Primary Persona: Sarah Mitchell - Professional Photographer**
+**Primary Persona: Julien Mfochive - Professional Photographer**
 - Age: 28-45
 - Specializations: Editorial, commercial, documentary photography
 - Needs: Clean, professional portfolio that impresses clients and showcases work quality

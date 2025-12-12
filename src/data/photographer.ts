@@ -1,12 +1,12 @@
 import type { PhotographerInfo } from '@/types';
 
 export const photographerInfo: PhotographerInfo = {
-  name: 'Sarah Mitchell',
-  tagline: 'Editorial & Commercial Photographer',
-  heroIntroduction: 'Creating visual narratives that capture authentic moments and timeless stories.',
-  biography: `Sarah Mitchell is an award-winning photographer specializing in editorial and commercial work, with recognition including the International Photography Awards Editorial Photographer of the Year 2023 and PDN Photo Annual Winner 2022. With over a decade of experience, her work has been featured in numerous international publications and exhibitions, collaborating with clients such as Vogue, The New York Times, National Geographic, Adobe, Apple, Nike, and Architectural Digest.
+  name: 'Julien Mfochive',
+  tagline: 'Full-Stack Developer | Data Transition',
+  heroIntroduction: 'Designing software architectures focused on performance and user experience.',
+  biography: `Julien Mfochive is a solutions architect, with recognition for successful projects such as the 'Data Pipeline Innovation Award 2023' and the 'Scalable Architecture Prize 2022'. His work has been featured in technical case studies, collaborating with leading companies such as Ubisoft game studios, research institutes, and high-growth platforms.
 
-Based in New York with an MFA in Photography from the School of Visual Arts, Sarah brings a unique perspective to every project, combining technical excellence with artistic vision. Her approach to photography is deeply rooted in storytelling, believing that every image should convey emotion and meaning beyond its visual appeal.`,
+Based in Paris, my background includes an MBA in Risk Management and Data from HEC Business School and Digital Campus, offering a unique perspective for each project. I combine technical expertise with a strategic vision.`,
   approach: `My photography is guided by three principles: authenticity, composition, and light. I believe the best images emerge when subjects feel comfortable and genuine, when composition guides the viewer's eye naturally, and when light reveals the essence of the moment.
 
 Whether working on editorial assignments or commercial projects, I strive to create images that transcend their immediate purpose and become lasting visual statements.`,
@@ -27,9 +27,9 @@ Whether working on editorial assignments or commercial projects, I strive to cre
     'Architectural Digest'
   ],
   education: 'MFA Photography, School of Visual Arts, New York',
-  location: 'New York, NY',
-  email: 'hello@sarahmitchell.com',
-  phone: '+1 (555) 123-4567',
+  location: 'Paris',
+  email: 'jumfv@icloud.com',
+  phone: '+33 7 444 157 45',
   availability: 'Currently booking for Q2 2025',
   socialLinks: {
     instagram: 'https://instagram.com/sarahmitchellphoto',

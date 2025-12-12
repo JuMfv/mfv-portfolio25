@@ -30,14 +30,14 @@ export default function Home() {
             loop
             playsInline
             preload="metadata"
-            poster="https://images.pexels.com/videos/2675516/free-video-2675516.jpg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200"
+            poster="https://images.pexels.com/videos/2792370/free-video-2792370.jpg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200"
             className="w-full h-full object-cover"
             onError={(e) => {
               const target = e.currentTarget;
               target.style.opacity = '0';
             }}
           >
-            <source src="https://videos.pexels.com/video-files/2675516/2675516-sd_960_540_24fps.mp4" type="video/mp4" />
+            <source src="https://videos.pexels.com/video-files/2792370/2792370-sd_960_540_30fps.mp4" type="video/mp4" />
           </video>
           {/* Video from Pexels */}
           {/* Gradient Overlay for text readability */}
@@ -67,7 +67,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
             >
-              {photographerInfo.tagline}
+              Full‑stack & Data Engineer — building web apps, data pipelines and ML products
             </motion.p>
 
             <motion.p
@@ -76,7 +76,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
             >
-              {photographerInfo.heroIntroduction}
+              I design and ship production-ready web applications and data products — focusing on performance, observability and maintainability.
             </motion.p>
           </motion.div>
 

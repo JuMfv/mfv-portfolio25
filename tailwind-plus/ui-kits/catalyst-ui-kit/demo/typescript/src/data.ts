@@ -56,7 +56,7 @@ export async function getOrders() {
       customer: {
         name: 'Michael Foster',
         email: 'michael.foster@example.com',
-        address: '357 Bridge St. New York, NY',
+        address: '357 Bridge St. Paris',
         country: 'USA',
         countryFlagUrl: '/flags/us.svg',
       },
@@ -765,7 +765,7 @@ export async function getEvents() {
       url: '/events/1002',
       date: 'Aug 5, 2024',
       time: '4 PM',
-      location: 'Electric Coliseum, New York, NY',
+      location: 'Electric Coliseum, Paris',
       totalRevenue: '$40,598',
       totalRevenueChange: '+3.2%',
       ticketsAvailable: 275,
