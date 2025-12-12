@@ -12,8 +12,10 @@ import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { AnimatePresence } from "framer-motion";
 import { lazy, Suspense } from "react";
 
+// Use Home as the root page directly
+import Home from "./pages/Home";
 // Code-split route components for better performance
-const Index = lazy(() => import("./pages/Index"));
+const Index = Home;
 const Portfolio = lazy(() => import("./pages/Portfolio"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 const About = lazy(() => import("./pages/About"));
